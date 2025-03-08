@@ -97,7 +97,7 @@ def upload(web_url: str = None, yt_url: str = None,file_path:str = None,lang:str
     if lang_select != None:
         global obj
         obj = Translate(lang=lang)
-        cheat_sheet = obj.generate_traslation(input=cheat_sheet)
+        cheat_sheet = obj.generate_translation(input=cheat_sheet)
     return {"topics": topics, "cheet_sheet": str(cheat_sheet)}
 
 @app.get("/study")
