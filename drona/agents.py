@@ -23,6 +23,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 from langchain_community.tools import DuckDuckGoSearchRun
 from langchain.agents import AgentExecutor, create_tool_calling_agent
+from langchain_google_genai import GoogleGenerativeAI
 
 # loading environment variables
 load_dotenv()
@@ -363,3 +364,32 @@ class Quiz:
         response = self.llm.invoke(self.formatted_prompt)
         final_response_with_explanation = self.getquiz_with_explanation(response.content)
         return final_response_with_explanation
+    
+
+class Translate:
+    def __init__(self, lang):
+        self.lang = lang
+        self.Translate_system_prompt = (
+        """Please translate the following English text into {target_language}. Aim for a translation that:
+
+            Maintains the original meaning completely
+            Sounds natural to native {target_language} speakers
+            Preserves the tone and style of the original text
+            Handles idioms and cultural references appropriately
+            Maintains formatting elements (bullet points, paragraph breaks, etc.)"""
+        )
+    
+    def generate_translation(self,input):
+        llm = GoogleGenerativeAI(model = 'gemini-1.5-pro', gemini_api_key = os.getenv("GEMINI_API_KEY"))
+        # Create a prompt template for answering questions
+        Translate_prompt = ChatPromptTemplate.from_messages(
+        [
+        ("system", self.Translate_system_prompt),
+        ("human", "Please translate the following content: \n {input}"),
+        ]
+        )
+        
+        chain = Translate_prompt | llm | StrOutputParser()
+        response = chain.invoke({"target_language":self.lang, "input":input})
+        return response 
+        
