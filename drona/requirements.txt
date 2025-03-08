@@ -8,3 +8,4 @@ langchain_core
 gunicorn
 google-api-python-client
 firecrawl-py
+fastapi[standard]
