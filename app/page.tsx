@@ -2,12 +2,10 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import axios from "axios"
 import Button from "@/components/ui/button"
 import Modal from "@/components/ui/modal"
 import MediaInput from "@/components/media-input"
 import { Brain, Zap, BookOpen, Rocket, Atom } from "lucide-react"
-import {UserProfile, useUser} from "@clerk/nextjs"
 
 
 export default function Home() {
@@ -15,21 +13,8 @@ export default function Home() {
   const router = useRouter()
 
   // Replace this with your actual auth context hook to obtain the logged in user's clerkId
-  const user=useUser()
-  const userClerkId = user?.user?.id;
 
   // Update user document on page load if not saved already.
-  useEffect(() => {
-    async function updateUserIfNeeded() {
-      try {
-        // Call API to update/upsert user using clerkId.
-        await axios.post("/api/userStore", { clerkId: userClerkId })
-      } catch (error) {
-        console.error("Error updating user", error)
-      }
-    }
-    updateUserIfNeeded()
-  }, [userClerkId])
 
   const handleMediaSubmit = (data: any) => {
     const formattedData = {
