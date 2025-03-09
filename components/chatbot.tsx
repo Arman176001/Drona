@@ -60,7 +60,7 @@ export default function ChatBot({ topic, onVisibilityChange }: ChatBotProps) {
 
     try {
       // Simulate API call to backend
-      const response = await fetch(`http://127.0.0.1:8000/chat?query=${encodeURIComponent(input)}`, {
+      const response = await fetch(`https://drona-7zhi.onrender.com/chat?query=${encodeURIComponent(input)}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

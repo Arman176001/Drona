@@ -217,7 +217,7 @@ export default function MediaInput({ onSubmit }: MediaInputProps) {
         throw new Error("Invalid input")
       }
 
-      const response = await axios.post("http://127.0.0.1:8000/upload", null, {
+      const response = await axios.post("https://drona-7zhi.onrender.com/upload", null, {
         params: params,
       })
       console.log("Received response from upload API", response)

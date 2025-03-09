@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node ./node_modules/next/dist/bin/next dev",
-    "build": "next build",
+    "build": "next ./node_modules/next/dist/bin/next build",
     "start": "next start",
     "lint": "next lint"
   },
