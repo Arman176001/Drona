@@ -107,7 +107,7 @@ export default function StudyPage() {
     setShowQuizRules(false)
     setIsLoading(true)
     try {
-      const response = await fetch(`http://127.0.0.1:8000/quiz?topic=${activeTopic.title}`)
+      const response = await fetch(`https://drona-7zhi.onrender.com/quiz?topic=${activeTopic.title}`)
       const data = await response.json()
       setQuizQuestions(data.quiz.Questions)
       setActiveView("quiz")
@@ -121,7 +121,7 @@ export default function StudyPage() {
   const fetchStudyContent = async () => {
     try {
       setIsLoading(true)
-      const response = await fetch("http://127.0.0.1:8000/study")
+      const response = await fetch("https://drona-7zhi.onrender.com/study")
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }

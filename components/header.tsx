@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { UserButton } from "@clerk/nextjs"
 import { Brain, Menu, X, Home, BookOpen, LayoutDashboard } from "lucide-react"
 
 export default function Header() {
@@ -42,7 +41,6 @@ export default function Header() {
             <BookOpen className="h-4 w-4" />
             <span>Library</span>
           </Link>
-          <UserButton afterSignOutUrl="/" />
         </div>
 
         <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -79,7 +77,6 @@ export default function Header() {
               <span>Library</span>
             </Link>
             <div className="pt-2 border-t border-white/10">
-              <UserButton afterSignOutUrl="/" />
             </div>
           </nav>
         </div>
