@@ -170,13 +170,6 @@ export default function StudyPage() {
           </div>
         </header>
 
-        <div className="p-4 border-b dark:border-gray-700">
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-600 dark:text-gray-400">Overall Progress: {progress}%</span>
-          </div>
-          <ProgressBar progress={progress} />
-        </div>
-
         <main className="flex-1 overflow-auto p-6">
           {activeView === "study" && (
             <StudyContent
