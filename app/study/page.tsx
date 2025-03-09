@@ -14,6 +14,7 @@ import ThemeToggle from "@/components/ui/theme-toggle"
 import Modal from "@/components/ui/modal"
 import Button from "@/components/ui/button"
 import axios from 'axios';
+import {  Atom } from "lucide-react"
 
 export default function StudyPage() {
   const searchParams = useSearchParams()
@@ -152,17 +153,19 @@ export default function StudyPage() {
       />
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="flex justify-between items-center p-4 border-b dark:border-gray-700">
+      <header className="flex justify-between items-center p-4 border-b dark:border-gray-700">
           <div className="flex items-center space-x-4">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_20250305_152709-JP3DbJCmh2ly5w6vWsSWwaHKNcVof5.png"
-              alt="Drona Logo"
-              className="h-12 object-contain"
-            />
+
+            <div className="relative bg-black rounded-full p-2">
+              <Atom className="text-indigo-400 h-10 w-10" />
+            </div>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <SearchBar />
+          <div className="flex items-center space-x-4 ">
+            <div className="flex justify-between items-center w-72">
+              <span className="text-sm text-gray-600 dark:text-gray-400">Overall Progress: {progress}%</span>
+            </div>
+            <ProgressBar progress={progress} />
             <ThemeToggle />
           </div>
         </header>
